@@ -1,0 +1,26 @@
+.metrics-div{
+    border: 2px solid black;
+    padding: 10px 15px;
+    min-width: 80%;
+    margin: 4% 5%;
+    border-radius: 5px;
+    background-color: #228DE0;
+   
+
+}
+
+.metrics-div strong{
+    font-size:1.2rem;
+}
+@media (max-width: 768px) {
+    .metric-header{
+        margin: 0;
+    }
+
+    .metrics-div{
+        padding: 5px 10px;
+        font-size: 0.8rem;
+    }
+
+   
+}

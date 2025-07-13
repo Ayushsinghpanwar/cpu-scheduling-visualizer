@@ -1,0 +1,83 @@
+{
+  "algorithmName": "FCFS - First Come First Served",
+  "definition": "FCFS is a non-preemptive CPU scheduling algorithm that executes processes in the order they arrive. It operates like a FIFO queue.",
+  "working": {
+    "description": "The OS maintains a queue for ready processes. The CPU executes the process at the front, letting it run until completion before moving to the next. There's no interruption or reordering.",
+    "example": {
+      "processTable": {
+        "headers": ["Process", "Arrival Time (ms)", "Burst Time (ms)"],
+        "rows": [
+          ["P1", "0", "5"],
+          ["P2", "1", "3"],
+          ["P3", "2", "8"]
+        ]
+      },
+      "ganttChartImage": "/images/fcfs_gantt_chart.png",
+      "queueDiagramImage": "/images/fcfs_queue.png"
+    }
+  },
+  "dataStructures": {
+    "used": ["Queue", "Array"],
+    "justification": "A queue ensures that the first arriving process is served first, and arrays store burst/arrival times efficiently."
+  },
+  "daaStrategy": {
+    "type": "Brute Force",
+    "justification": "FCFS makes no optimization decisions. It executes processes in order without evaluating burst or priority."
+  },
+  "efficiencyAnalysis": {
+    "analysisBasis": "Linear iteration over process queue",
+    "timeComplexity": {
+      "notation": "O(n)",
+      "reasoning": "Each process is visited once in the order of arrival."
+    },
+    "spaceComplexity": {
+      "notation": "O(n)",
+      "reasoning": "Stores process data (arrival, burst times) for n processes."
+    }
+  },
+  "characteristics": [
+    { "feature": "Type", "description": "Non-preemptive" },
+    { "feature": "Strategy", "description": "FIFO (First In First Out)" },
+    { "feature": "Throughput", "description": "Moderate; suffers when long jobs dominate" },
+    { "feature": "Turnaround Time", "description": "Varies greatly based on job order" },
+    { "feature": "Waiting Time", "description": "Can be long for short processes behind long ones" }
+  ],
+  "performanceIssues": {
+    "title": "Convoy Effect",
+    "description": "A long process can block short processes, leading to poor CPU/I/O utilization."
+  },
+  "advantages": [
+    "Simple and easy to implement",
+    "Fair — executes in order of arrival",
+    "No starvation; every process will execute"
+  ],
+  "disadvantages": [
+    "Non-preemptive — long jobs delay others",
+    "Poor average waiting time",
+    "Not ideal for time-sharing or interactive systems"
+  ],
+  "faq": [
+    {
+      "question": "What happens when two processes arrive at the same time?",
+      "answer": "Tie is broken by queue order (typically input sequence)."
+    },
+    {
+      "question": "Can FCFS be used in real-time systems?",
+      "answer": "No, it's better suited for batch systems due to its non-preemptive nature."
+    },
+    {
+      "question": "Is FCFS optimal in terms of waiting time?",
+      "answer": "No, shorter jobs can suffer from the convoy effect."
+    }
+  ],
+  "resources": [
+    {
+      "title": "GeeksforGeeks - FCFS Scheduling",
+      "url": "https://www.geeksforgeeks.org/first-come-first-serve-cpu-scheduling-non-preemptive/"
+    },
+    {
+      "title": "YouTube - FCFS Scheduling Explained with Example",
+      "url": "https://www.youtube.com/watch?v=MZdVAVMgNpA"
+    }
+  ]
+}
